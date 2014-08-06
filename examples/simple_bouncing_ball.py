@@ -4,6 +4,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from naturepy.pvector import PVector
 from naturepy.mover import Mover
+import naturepy.tk_monkey_patch
 import tkinter
 
 
@@ -11,11 +12,6 @@ C_HEIGHT = 320
 C_WIDTH = 200
 D_STEP = 5
 G_EARTH = 9.8*(D_STEP/1000)
-
-
-def _create_circle(self, x, y, r, **kwargs):
-    return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)
-tkinter.Canvas.create_circle = _create_circle
 
 
 def draw():

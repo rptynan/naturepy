@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 from .pvector import PVector
 import tkinter
 
@@ -22,16 +21,22 @@ class Mover:
         if self.loc.x > width:
             self.loc.x = width
             self.vec.x *= -1
-        if self.loc.x < 0 :
+        if self.loc.x < 0:
             self.loc.x = 0
             self.vec.x *= -1
         if self.loc.y > height:
             self.loc.y = height
             self.vec.y *= -1
-        if self.loc.y < 0 :
+        if self.loc.y < 0:
             self.loc.y = 0
             self.vec.y *= -1
 
-
     def apply_force(self, force):
         self.acc += force / self.mass
+
+    def grav_attract(self, m):
+        force = self.loc - m.loc
+        distance = force.magnitude()
+        force.normalize()
+        force *= (6.67e-11 * self.mass * m.mass) / (distance * distance)
+        return force
