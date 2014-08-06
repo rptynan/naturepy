@@ -21,10 +21,10 @@ class Mover:
     def display(self, canvas):
         print(self.canvas_id)
         canvas.delete(self.canvas_id)
-        self.canvas_id = canvas.create_circle(self.loc.x, self.loc.y, self.mass,
+        self.canvas_id = canvas.create_circle(self.loc.x, self.loc.y,
+                                              self.mass,
                                               outline="dark slate grey",
                                               width=1, fill="grey")
-
 
     def check_edges(self, width, height):
         if self.loc.x > width:
@@ -46,8 +46,8 @@ class Mover:
     def grav_attract(self, m):
         force = self.loc - m.loc
         distance = force.magnitude()
-        distance = max(5,distance)
-        distance = min(25,distance)
+        distance = max(5, distance)
+        distance = min(25, distance)
         force.normalize()
         force *= (self.mass * m.mass) / (distance * distance)
         return force

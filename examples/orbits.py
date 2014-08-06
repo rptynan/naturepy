@@ -14,7 +14,7 @@ D_STEP = 10
 
 def draw():
     global center, sat1, sat2
-    
+
     f = center.grav_attract(sat1)
     sat1.apply_force(f)
     f = center.grav_attract(sat2)
@@ -36,15 +36,15 @@ canvas = tkinter.Canvas(root, height=C_HEIGHT, width=C_WIDTH)
 canvas.pack(expand="YES")
 canvas.configure(background="white")
 
-center = Mover(PVector(C_WIDTH/2, C_HEIGHT/2), 
-               PVector(0,0), PVector(0,0), 20)
+center = Mover(PVector(C_WIDTH/2, C_HEIGHT/2),
+               PVector(0, 0), PVector(0, 0), 20)
 center.display(canvas)
-sat1 = Mover(PVector(C_WIDTH/4, C_HEIGHT/4), 
-             PVector(0,0), PVector(0,0), 10)
+sat1 = Mover(PVector(C_WIDTH/4, C_HEIGHT/4),
+             PVector(0, 0), PVector(0, 0), 10)
 sat1.vec.x = 1
-sat2 = Mover(PVector(C_WIDTH/2, C_HEIGHT/3), 
-             PVector(0,0), PVector(0,0), 10)
+sat2 = Mover(PVector(C_WIDTH/2, C_HEIGHT/3),
+             PVector(0, 0), PVector(0, 0), 10)
 sat2.vec.x = 1.5
 
-canvas.after(1,draw)
+canvas.after(1, draw)
 canvas.mainloop()

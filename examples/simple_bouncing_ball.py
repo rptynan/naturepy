@@ -10,8 +10,8 @@ import tkinter
 
 C_HEIGHT = 320
 C_WIDTH = 200
-D_STEP = 5
-G_EARTH = 9.8*(D_STEP/1000)
+D_STEP = 10
+G_EARTH = 0.2
 
 
 def draw():
@@ -24,11 +24,7 @@ def draw():
     if circle.loc.y == C_HEIGHT:
         circle.vec *= 0.8
     circle.update()
-
-    canvas.delete(circle.canvas_id)
-    circle.canvas_id = canvas.create_circle(circle.loc.x, circle.loc.y, 10,
-                                            outline="dark slate grey",
-                                            width=2, fill="grey")
+    circle.display(canvas)
     canvas.after(D_STEP, draw)
 
 
