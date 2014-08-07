@@ -18,12 +18,18 @@ class PVector:
         return PVector(self.x * scal, self.y * scal)
 
     def __truediv__(self, scal):
-        return PVector(self.x / scal, self.y / scal)
+        try:
+            return PVector(self.x / scal, self.y / scal)
+        except ZeroDivisionError:
+            return PVector(self.x, self.y)
 
     def magnitude(self):
         return math.sqrt(self.x*self.x + self.y*self.y)
 
     def normalize(self):
         mag = self.magnitude()
-        self.x /= mag
-        self.y /= mag
+        try:
+            self.x /= mag
+            self.y /= mag
+        except ZeroDivisionError:
+            pass
