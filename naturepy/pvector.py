@@ -26,6 +26,9 @@ class PVector:
     def magnitude(self):
         return math.sqrt(self.x*self.x + self.y*self.y)
 
+    def heading(self):
+        return math.atan2(self.y, self.x)
+
     def normalize(self):
         mag = self.magnitude()
         try:

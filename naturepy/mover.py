@@ -6,6 +6,7 @@ import tkinter
 class Mover:
     # Contains loc, vec, acc, mass
     canvas_id = 0
+    elast = -1
 
     def __init__(self, _loc, _vec, _acc, _mass):
         self.loc = _loc
@@ -19,7 +20,6 @@ class Mover:
         self.acc *= 0
 
     def display(self, canvas):
-        print(self.canvas_id)
         canvas.delete(self.canvas_id)
         self.canvas_id = canvas.create_circle(self.loc.x, self.loc.y,
                                               self.mass,
@@ -29,16 +29,16 @@ class Mover:
     def check_edges(self, width, height):
         if self.loc.x > width:
             self.loc.x = width
-            self.vec.x *= -1
+            self.vec.x *= self.elast
         if self.loc.x < 0:
             self.loc.x = 0
-            self.vec.x *= -1
+            self.vec.x *= self.elast
         if self.loc.y > height:
             self.loc.y = height
-            self.vec.y *= -1
+            self.vec.y *= self.elast
         if self.loc.y < 0:
             self.loc.y = 0
-            self.vec.y *= -1
+            self.vec.y *= self.elast
 
     def apply_force(self, force):
         self.acc += force / self.mass
