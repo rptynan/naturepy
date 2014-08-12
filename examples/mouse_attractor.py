@@ -27,7 +27,6 @@ def _sat_display(self):
     # Swapping acc and vec here is interesting
     head = PVector(10 * math.cos(self.acc.heading()) + self.loc.x,
                    10 * math.sin(self.acc.heading()) + self.loc.y)
-    print(self.acc.x, self.acc.y)
     self.canvas_id2 = canvas.create_circle(head.x, head.y,
                                            self.mass/2,
                                            outline="dark slate grey",
