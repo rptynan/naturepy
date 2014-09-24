@@ -8,8 +8,8 @@ class Particle:
 
     def __init__(self, _loc, _lifespan):
         self.loc = _loc
-        self.vec = PVector(0,0)
-        self.acc = PVector(0,0)
+        self.vec = PVector(0, 0)
+        self.acc = PVector(0, 0)
         self.org_lifespan = _lifespan
         self.lifespan = _lifespan
 
@@ -29,9 +29,9 @@ class Particle:
             ins = 255 - ((self.lifespan / self.org_lifespan) * 255)
         except ZeroDivisionError:
             ins = 0
-        color = "#%02x%02x%02x" % (ins,ins,ins)
+        color = "#%02x%02x%02x" % (ins, ins, ins)
         self.canvas_id = canvas.create_circle(self.loc.x, self.loc.y,
-                                              10, outline=color,
+                                              8, outline=color,
                                               width=1, fill=color)
 
     def is_dead(self):
