@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 import os
 import sys
-import math
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from naturepy.pvector import PVector
 from naturepy.mover import Mover
 import tkinter
+import math
 
 
 C_HEIGHT = 512

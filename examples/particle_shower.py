@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import os
 import sys
-from random import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from naturepy.pvector import PVector
 from naturepy.mover import Mover
 from naturepy.particle import Particle
 import tkinter
+from random import random
 
 
 C_HEIGHT = 512
