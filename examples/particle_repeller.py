@@ -35,9 +35,13 @@ class ParticleSystem:
 
 
 def draw():
-    global ps
+    global ps, center
 
     for s in ps:
+        for p in s.particles:
+            if (p.loc - center.loc).magnitude() < 100:
+                f = center.grav_attract(p)
+                p.apply_force(f*-0.6)   # Repels
         s.apply_force(PVector(0, 0.05))
         s.run(canvas)
         s.add_particle()
@@ -52,6 +56,10 @@ root.title("Particle Shower")
 canvas = tkinter.Canvas(root, height=C_HEIGHT, width=C_WIDTH)
 canvas.pack(expand="YES")
 canvas.configure(background="white")
+
+center = Mover(PVector(C_WIDTH/2, C_HEIGHT/2),
+               PVector(0, 0), PVector(0, 0), 20)
+center.display(canvas)
 
 ps = []
 ps.append(ParticleSystem(PVector(C_WIDTH/5, C_HEIGHT/8)))
